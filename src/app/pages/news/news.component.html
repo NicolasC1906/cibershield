@@ -1,0 +1,51 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">
+      <div [matBadge]="noticias.length" matBadgeOverlap="false">ThreatAlert 360</div>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="b-t-1">
+    <mat-paginator
+      [length]="noticias.length"
+      [pageSize]="newsPerPage"
+      [pageIndex]="currentPage"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+
+    <ng-container *ngIf="isLoading; else newsContent">
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+      <p>Cargando noticias...</p>
+    </ng-container>
+
+    <ng-template #newsContent>
+      <div *ngIf="noticias.length > 0; else noNews">
+        <div class="news-grid example-card" *ngFor="let news of pagedNoticias">
+          <mat-card-header>
+            <mat-card-title>{{ news.title }}</mat-card-title>
+            <mat-card-subtitle>{{ formatNewsDate(news.pubDate) }}</mat-card-subtitle>
+            <!-- <mat-card-subtitle>Fuente: </mat-card-subtitle> -->
+          </mat-card-header>
+          <mat-card-content class="noticia-descripcion">
+            <div [innerHTML]="news.description"></div>
+          </mat-card-content>
+          <mat-card-actions>
+            <a mat-stroked-button [href]="news.link" target="_blank">Ver Noticia</a>
+          </mat-card-actions>
+          <mat-chip-listbox>
+            <mat-chip color="warn" selected *ngFor="let category of news.category">
+              <mat-icon matChipAvatar>folder</mat-icon>
+              {{ category }}
+            </mat-chip>
+          </mat-chip-listbox>
+        </div>
+      </div>
+      <ng-template #noNews>
+        <p>No hay noticias disponibles en este momento.</p>
+      </ng-template>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,99 @@
+<div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
+  <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
+    <div class="col-lg-4 d-flex align-items-center">
+      <mat-card class="cardWithShadow boxed-auth">
+        <div class="back-to-home">
+          <button mat-icon-button [routerLink]="['/']">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div>
+        <mat-card-content class="p-32">
+          <div class="text-center">
+            <a [routerLink]="['/']">
+              <img
+                src="./assets/images/logos/CiberShield.svg"
+                class="align-middle m-2"
+                alt="logo"
+              />
+            </a>
+          </div>
+
+          <div class="row m-t-24 custom-row justify-content-center">
+            <div class="col-12">
+                <button mat-stroked-button class="w-100" (click)="loginWithGoogle()">
+                    <div class="d-flex align-items-center">
+                        <img
+                            src="/assets/images/svgs/google-icon.svg"
+                            alt="google"
+                            width="16"
+                            class="m-r-8"
+                        />
+                        Iniciar con Google
+                    </div>
+                </button>
+            </div>
+        </div>
+
+
+          <div class="or-border m-t-30">o iniciar sesión con</div>
+
+          <form class="m-t-30" [formGroup]="form" (ngSubmit)="login()">
+            <!-- Correo Electrónico -->
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Correo Electrónico</mat-label>
+              <input matInput formControlName="email" type="email" required />
+              <mat-error *ngIf="form.get('email')?.hasError('email')">Correo electrónico no válido.</mat-error>
+              <mat-error *ngIf="form.get('email')?.hasError('required')">El correo electrónico es requerido.</mat-error>
+            </mat-form-field>
+
+            <!-- Espacio entre los campos de formulario -->
+              <div style="height: 20px;"></div>
+
+            <!-- Contraseña -->
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Contraseña</mat-label>
+            <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'" required />
+            <button mat-icon-button matSuffix (click)="togglePassword()" type="button">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="form.get('password')?.hasError('required')">La contraseña es requerida.</mat-error>
+            <mat-error *ngIf="form.get('password')?.hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</mat-error>
+          </mat-form-field>
+
+
+            <!-- Opciones y enlaces adicionales -->
+            <div class="d-flex align-items-center m-b-12">
+              <mat-checkbox color="primary">Recordar este dispositivo</mat-checkbox>
+              <a [routerLink]="['/']" class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14">
+                ¿Olvidaste tu contraseña?
+              </a>
+            </div>
+
+            <!-- Mostrando el mensaje de error -->
+            <mat-error *ngIf="authService.errorMessage" class="error-text">
+              {{ authService.errorMessage }}
+            </mat-error>
+
+            <!-- Botón de envío -->
+            <button mat-flat-button color="primary" class="w-100" type="submit" [disabled]="form.invalid">
+              Iniciar sesión
+            </button>
+          </form>
+
+
+
+
+          <span class="d-block f-w-500 text-center m-t-24">
+            ¿Eres nuevo en CiberShied?
+            <a
+              [routerLink]="['/authentication/register']"
+              class="text-decoration-none text-primary f-w-500 f-s-14"
+            >
+              Crea una cuenta
+            </a>
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

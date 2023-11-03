@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bytebog-23ca3": {
+      "hosting": {
+        "Modernize": [
+          "bytebog-23ca3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bytebog-23ca3"
+  }
+}

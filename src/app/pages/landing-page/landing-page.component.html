@@ -1,0 +1,113 @@
+<!-- Primera Sección -->
+<div class="sect sect--padding-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="site">
+          <h1 class="site__title">Bienvenido a CiberShield</h1>
+          <h2 class="site__subtitle">Cerrando la brecha del conocimiento en ciberseguridad</h2>
+          <div class="site__box-link">
+            <!-- Botón Angular Material -->
+            <button mat-raised-button color="primary" (click)="scrollToElement()">Conoce a CiberShield</button>
+          </div>
+          <img class="site__img" src="https://image.ibb.co/c7grYb/image3015.png" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Conócenos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+
+   <!-- Segunda Sección - Conócenos -->
+<div class=" sect--white justified-text" id="conocenos">
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="Nuestra Misión">
+      <!-- Contenido sobre la misión de CiberShield -->
+      <h2>Nuestra Misión</h2>
+      <p>En CiberShield, nuestra misión fundamental es cerrar la brecha de conocimiento en ciberseguridad. Reconocemos que vivimos en un mundo cada vez más conectado digitalmente, pero con esa conectividad viene la necesidad urgente de protegerse contra las amenazas cibernéticas.</p>
+      <p>Nos dedicamos a educar a individuos y organizaciones sobre las mejores prácticas de ciberseguridad, proporcionándoles las herramientas y el conocimiento necesarios para defenderse en línea. Creemos que al empoderar a las personas con información y habilidades, podemos hacer que el mundo digital sea más seguro para todos.</p>
+    </mat-tab>
+    <mat-tab label="Nuestros Valores">
+      <!-- Contenido sobre los valores de CiberShield -->
+      <h2>Nuestros Valores</h2>
+      <p>En CiberShield, nuestros valores son la base de todo lo que hacemos. Estos valores nos guían en la toma de decisiones y en la forma en que interactuamos con nuestros usuarios y socios.</p>
+      <ul>
+        <li><strong>Seguridad:</strong> La seguridad es nuestra máxima prioridad. Nos esforzamos por crear un entorno en línea seguro y protegido para todos.</li>
+        <li><strong>Educación:</strong> Creemos en la importancia de la educación en ciberseguridad. Ofrecemos recursos y capacitación para que las personas se conviertan en expertos en seguridad digital.</li>
+        <li><strong>Innovación:</strong> Estamos comprometidos con la innovación constante. Desarrollamos soluciones avanzadas para hacer frente a las amenazas cibernéticas en evolución.</li>
+      </ul>
+      <p>Estos valores son la razón por la que nos levantamos cada día y trabajamos arduamente para proteger a nuestros usuarios en línea.</p>
+    </mat-tab>
+    <mat-tab label="Por Qué Elegirnos">
+      <!-- Contenido sobre por qué elegir CiberShield -->
+      <h2>Por Qué Elegirnos</h2>
+      <p>En un mundo digital en constante cambio, CiberShield se destaca como una opción única para protegerse en línea. Aquí hay algunas razones por las que deberías elegirnos:</p>
+      <ul>
+        <li><strong>Aprendizaje Práctico:</strong> Ofrecemos un enfoque práctico para la educación en ciberseguridad. Nuestros usuarios pueden aprender y practicar habilidades de seguridad en un entorno seguro.</li>
+        <li><strong>Herramientas Avanzadas:</strong> Proporcionamos herramientas de seguridad avanzadas que ayudan a proteger tu información y dispositivos en tiempo real.</li>
+        <li><strong>Análisis de Amenazas:</strong> Mantenemos un ojo constante en las amenazas cibernéticas emergentes y proporcionamos análisis en tiempo real para mantenerte un paso adelante de los atacantes.</li>
+      </ul>
+      <p>CiberShield es tu compañero confiable en el mundo digital. Únete a nosotros y navega por la web con confianza y seguridad.</p>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Servicios</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+
+    <div class="row">
+      <div class="col-sm-6 col-lg-3" *ngFor="let product of products">
+        <mat-card class="cardWithShadow productcard overflow-hidden">
+          <a [routerLink]="['/widgets/cards']">
+            <img
+              [src]="product.imageUrl"
+              alt="imgSrc"
+              class="w-100"
+              mat-card-image
+            />
+          </a>
+          <mat-card-content class="p-b-24 p-t-12 position-relative">
+            <button
+              mat-mini-fab
+              color="primary"
+              class="icon-30 cart-btn"
+              matTooltip="Ver componentes"
+            >
+              <i-tabler [name]="product.iconName" class="icon-16"></i-tabler>
+            </button>
+            <mat-card-title class="mat-headline-2 f-s-16 m-b-4">{{ product.name }}</mat-card-title>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <h6 class="mat-body-2 f-w-600">{{ product.description }}</h6>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+
+<mat-divider></mat-divider>
+ <!--  sección de noticias -->
+
+ <app-news></app-news>
+
